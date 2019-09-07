@@ -14,11 +14,9 @@ public class AdminDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-
     private static final String MATCH_ADMIN_SQL="SELECT COUNT(*) FROM admin where admin_id = ? and password = ? ";
     private static final String RE_PASSWORD_SQL="UPDATE admin set password = ? where admin_id = ? ";
     private static final String GET_PASSWD_SQL="SELECT password from admin where admin_id = ?";
-
     public int getMatchCount(int adminId,String password){
         return jdbcTemplate.queryForObject(MATCH_ADMIN_SQL,new Object[]{adminId,password},Integer.class);
     }
